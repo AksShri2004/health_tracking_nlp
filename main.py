@@ -35,7 +35,10 @@ data = {
       "calories": cal,
     }
 }
-second = requests.post(url="https://api.sheety.co/d15002e5386e3779f61c2bc7ddd5fafc/workoutTracking/workouts", json= data,
+sheet_endpoint= os.environ["sheety_endpoint"]
+auth = os.environ["auth"]
+
+second = requests.post(url=sheet_endpoint, json= data,
                        headers = {"Content-Type": "application/json",
-                                  "Authorization": "Basic bnVsbDpudWxs"})
+                                  "Authorization": auth})
 print(second.text)
